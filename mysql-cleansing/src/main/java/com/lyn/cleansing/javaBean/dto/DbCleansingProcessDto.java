@@ -5,7 +5,7 @@ import com.lyn.cleansing.javaBean.queryBean.InformationSchemaDto;
 import lombok.Data;
 
 /**
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/31
  */
 @Data

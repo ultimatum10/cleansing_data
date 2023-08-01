@@ -3,7 +3,7 @@ package com.lyn.cleansing.utils;
 import org.springframework.context.ApplicationContext;
 
 /**
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/31
  */
 public class ApplicationUtils {

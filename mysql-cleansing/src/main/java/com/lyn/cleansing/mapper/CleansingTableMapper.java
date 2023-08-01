@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 /**
  * 清洗数据mapper
  *
- * @Author: linkaidi
+ * @Author: ultimatum10
  * @Date: 2023/7/31
  */
 

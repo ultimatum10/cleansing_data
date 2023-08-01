@@ -1,7 +1,7 @@
 package com.lyn.cleansing.constant;
 
 /**
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/31
  */
 public class DBConstant {

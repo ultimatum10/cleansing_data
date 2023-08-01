@@ -14,7 +14,7 @@ import lombok.Data;
 /**
  * 洗数据配置
  *
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/27
  */
 @Configuration

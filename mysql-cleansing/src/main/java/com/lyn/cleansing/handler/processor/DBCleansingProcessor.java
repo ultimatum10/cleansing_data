@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  * 数据库类型执行器
  * 直接数据库sql进行操作，无关逻辑
  *
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/28
  */
 @Data

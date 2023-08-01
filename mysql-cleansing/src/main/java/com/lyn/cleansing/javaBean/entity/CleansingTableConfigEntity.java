@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 清洗数据表配置
  *
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/28
  */
 @Data

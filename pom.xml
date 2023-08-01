@@ -5,9 +5,11 @@
 
     <groupId>com.lyn.cleansing</groupId>
     <artifactId>cleansing</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1-SNAPTHOT</version>
     <packaging>pom</packaging>
     <name>cleansing</name>
+
+    <url>https://github.com/ultimatum10/cleansing_data</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -92,5 +94,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

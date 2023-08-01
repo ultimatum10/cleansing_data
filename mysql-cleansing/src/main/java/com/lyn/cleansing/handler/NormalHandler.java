@@ -31,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
  * 普通处理器
  * 通过数据库配置处理
  *
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/26
  */
 @Service
@@ -56,38 +56,32 @@ public class NormalHandler {
      * @param list 读取需要修改的数据
      */
     @Transactional(rollbackFor = Exception.class)
-    public void cleansingMysqlData(List<Map<String, String>> list) {
-        try {
-            //配置校验信息打印
-            if (CollectionUtils.isEmpty(list)) {
-                throw new Exception("入参数据为空，请检查...");
-            }
-
-            //测试数据库权限，需要删表建表，增删改查数据库权限
-
-            //获取数据库表字段信息
-            Map<String, List<InformationSchemaDto>> tableMap = getTableColumnMap();
-
-            //根据配置走数据库配置或者字段注释
-            CleansingTypeEnum cleansingType = cleansingConfig.getCleansingTypeEnum();
-            switch (cleansingType) {
-                case ANNOTATION:
-                    //表注释修改数据
-                    break;
-                case DATA:
-                    log.info("开始数据库配置修改数据");
-                    cleansingByDbData(list, tableMap);
-                    break;
-                default:
-                    log.error("清洗数据类型异常,{}", JsonUtils.toJson(cleansingType));
-            }
-
-            log.info("处理数据成功");
-        } catch (Exception e) {
-            log.error("处理数据失败", e);
-        } finally {
-            log.info("数据处理结束...");
+    public void cleansingMysqlData(List<Map<String, String>> list) throws Exception {
+        //配置校验信息打印
+        if (CollectionUtils.isEmpty(list)) {
+            throw new Exception("入参数据为空，请检查...");
         }
+
+        //测试数据库权限，需要删表建表，增删改查数据库权限
+
+        //获取数据库表字段信息
+        Map<String, List<InformationSchemaDto>> tableMap = getTableColumnMap();
+
+        //根据配置走数据库配置或者字段注释
+        CleansingTypeEnum cleansingType = cleansingConfig.getCleansingTypeEnum();
+        switch (cleansingType) {
+            case ANNOTATION:
+                //表注释修改数据
+                break;
+            case DATA:
+                log.info("开始数据库配置修改数据");
+                cleansingByDbData(list, tableMap);
+                break;
+            default:
+                log.error("清洗数据类型异常,{}", JsonUtils.toJson(cleansingType));
+        }
+
+        log.info("处理数据成功");
     }
 
     /**
@@ -105,7 +99,7 @@ public class NormalHandler {
         addDbProcessor(tableMap, processorList);
 
         //添加代码执行器进集合
-        addLogicProcessor( processorList);
+        addLogicProcessor(processorList);
 
         if (CollectionUtils.isEmpty(processorList)) {
             log.info("没有需要执行的操作，结束");
@@ -134,7 +128,7 @@ public class NormalHandler {
     /**
      * 添加逻辑执行器
      */
-    private void addLogicProcessor( List<BaseCleansingProcessor> processorList) {
+    private void addLogicProcessor(List<BaseCleansingProcessor> processorList) {
 
         Map<String, BaseCleansingProcessor> beansOfTypeMap = applicationContext
                 .getBeansOfType(BaseCleansingProcessor.class);

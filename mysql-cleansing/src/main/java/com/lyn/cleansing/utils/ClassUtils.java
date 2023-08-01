@@ -9,7 +9,7 @@ import org.reflections.Reflections;
 import com.lyn.cleansing.handler.processor.BaseCleansingProcessor;
 
 /**
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/28
  */
 public class ClassUtils {

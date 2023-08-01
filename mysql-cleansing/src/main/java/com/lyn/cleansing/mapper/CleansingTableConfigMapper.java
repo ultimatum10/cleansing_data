@@ -9,7 +9,7 @@ import com.lyn.cleansing.javaBean.queryBean.InformationSchemaDto;
 /**
  * 查询清洗配置
  *
- * @Author: linkaidi
+ * @Author: ultimatum10
  * @Date: 2023/7/31
  */
 @Mapper

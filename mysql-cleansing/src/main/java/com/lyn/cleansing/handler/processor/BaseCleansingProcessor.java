@@ -9,7 +9,7 @@ import com.lyn.cleansing.enums.ProcessorTypeEnum;
  *
  * 【实现说明】：请确保添加@Component或者@Service，并且确保spring容器管理到该bean
  *
- * @author linkaidi
+ * @author ultimatum10
  * @date 2023/7/28
  */
 public interface BaseCleansingProcessor {
