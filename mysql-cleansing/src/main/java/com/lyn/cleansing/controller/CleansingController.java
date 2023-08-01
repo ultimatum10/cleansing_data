@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lyn.cleansing.handler.NormalHandler;
 import com.lyn.cleansing.javaBean.req.CleansingDataReqDto;
@@ -17,7 +18,8 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2023/8/1
  */
 @Slf4j
-@RestController(value = "/cleansing")
+@RestController
+@RequestMapping(value = "/cleansing")
 public class CleansingController {
 
     @Autowired
