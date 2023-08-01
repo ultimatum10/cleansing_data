@@ -95,4 +95,17 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <!--必须与 settings.xml 的 id 一致-->
+            <id>joyowogroup-kylin-maven-releases</id>
+            <url>https://joyowogroup-maven.pkg.coding.net/repository/kylin/maven-releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <!--必须与 settings.xml 的 id 一致-->
+            <id>joyowogroup-kylin-maven-snapshots</id>
+            <url>https://joyowogroup-maven.pkg.coding.net/repository/kylin/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
