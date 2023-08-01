@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyn.cleansing.mapper.CleansingTableConfigMapper">
+
+    <resultMap id="all" type="com.lyn.cleansing.javaBean.entity.CleansingTableConfigEntity">
+        <id column="id" property="id"/>
+        <result column="tb_name" property="tbName"/>
+        <result column="cleansing_column" property="cleansingColumn"/>
+        <result column="data_cleansing_name" property="dataCleansingName"/>
+        <result column="condition_column" property="conditionColumn"/>
+        <result column="data_condition_name" property="dataConditionName"/>
+        <result column="order_no" property="orderNo"/>
+    </resultMap>
+
+    <sql id="all">
+        id,tb_name,cleansing_column,data_cleansing_name,condition_column,data_condition_name,order_no
+    </sql>
+
+    <select id="queryAll" resultMap="all">
+        SELECT
+        <include refid="all"/>
+        FROM cleansing_table_config
+        WHERE TRUE
+    </select>
+
+    <select id="queryTableInfo" resultType="com.lyn.cleansing.javaBean.queryBean.InformationSchemaDto">
+        SELECT t1.TABLE_NAME               as tableName,
+               t2.TABLE_COMMENT            as tableComment,
+               t1.COLUMN_NAME              as columnName,
+               t1.DATA_TYPE                as dataType,
+               t1.COLUMN_TYPE              as columnType,
+               t1.COLUMN_COMMENT           as columnComment,
+               t1.COLUMN_KEY               as columnKey,
+               t1.CHARACTER_MAXIMUM_LENGTH as characterMaximumLength,
+               t1.IS_NULLABLE              as isNullable,
+               t1.COLUMN_DEFAULT           as columnDefault
+        FROM information_schema.COLUMNS t1,
+             information_schema.TABLES t2
+        WHERE t1.TABLE_SCHEMA = #{tableSchema}
+          AND t2.TABLE_SCHEMA = t1.TABLE_SCHEMA
+          AND t1.TABLE_NAME is not null
+          AND t2.TABLE_NAME = t1.TABLE_NAME
+        ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION;
+    </select>
+</mapper>
