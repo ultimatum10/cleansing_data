@@ -35,7 +35,7 @@ public class CleansingController {
      * @Date: 2023/8/1
      */
     @PostMapping({"/cleansingData"})
-    public String listEnums(@RequestBody CleansingDataReqDto reqDto) {
+    public String cleansingData(@RequestBody CleansingDataReqDto reqDto) {
         List<Map<String, String>> list = reqDto.getList();
         if (CollectionUtils.isEmpty(list)) {
             return "failed";

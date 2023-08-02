@@ -1,11 +1,11 @@
 -- 如果你需要使用数据库配置清洗数据，请新建下表并增加配置
 CREATE TABLE `cleansing_table_config` (
     `id` bigint(20) NOT NULL COMMENT '主键ID',
-    `tb_name` char(64) DEFAULT NULL COMMENT '表名',
-    `cleansing_column` varchar(128) DEFAULT NULL COMMENT '清洗字段',
-    `data_cleansing_name` varchar(128) DEFAULT NULL COMMENT '清洗赋值数据字段名称',
-    `condition_column` varchar(128) DEFAULT NULL COMMENT '条件字段',
-    `data_condition_name` varchar(128) DEFAULT NULL COMMENT '清洗赋值条件字段名称',
+    `tb_name` char(64) NOT NULL COMMENT '表名',
+    `cleansing_column` varchar(128) NOT NULL COMMENT '清洗字段',
+    `data_cleansing_name` varchar(128) NOT NULL COMMENT '清洗赋值数据字段名称',
+    `condition_column` varchar(128) NOT NULL COMMENT '条件字段',
+    `data_condition_name` varchar(128) NOT NULL COMMENT '清洗赋值条件字段名称',
     `order_no` int(4)  COMMENT '操作排序',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='清洗数据表配置';
