@@ -21,11 +21,12 @@ Version：0.0.1-SNAPSHOT
 - 支持清洗数据逻辑排序
 ## 3.使用方式
 1. 配置文件中增加cleansing.config.cleansingType=data(目前仅支持data即数据库配置清洗)
-2. 新增数据库表cleansing_table_config，建库脚本详见：src/main/resources/bak-sql/配置建表（可选）.sql
-3. 配置cleansing_table_config表
-4. 程序主类中@ComponentScan确保扫描到com.lyn.*下的包
-5. （可选）如果有自定义的逻辑处理，请实现BaseCleansingProcessor接口
-6. 自动注入NormalHandler类，并调用cleansingMysqlData方法
+2. 配置mybatis扫描mapper的xml地址能扫描依赖jar包下的地址  mapper-locations: classpath*:mapper/*.xml
+3. 新增数据库表cleansing_table_config，建库脚本详见：src/main/resources/bak-sql/配置建表（可选）.sql
+4. 配置cleansing_table_config表
+5. 程序主类中@ComponentScan确保扫描到com.lyn.*下的包
+6. （可选）如果有自定义的逻辑处理，请实现BaseCleansingProcessor接口
+7. 自动注入NormalHandler类，并调用cleansingMysqlData方法
 ## 4.风险
 1. 暂不支持数据库配置和入参之间的类型校验，可能导致执行失败
 2. 暂不支持洗数据前，涉及配置相关表的备份功能，可能导致数据丢失
