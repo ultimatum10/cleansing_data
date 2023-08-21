@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyn.cleansing.mapper.CleansingTableConfigMapper">
+<mapper namespace="com.joyowo.cleansing.mapper.CleansingTableConfigMapper">
 
-    <resultMap id="all" type="com.lyn.cleansing.javaBean.entity.CleansingTableConfigEntity">
+    <resultMap id="all" type="com.joyowo.cleansing.javaBean.entity.CleansingTableConfigEntity">
         <id column="id" property="id"/>
         <result column="tb_name" property="tbName"/>
         <result column="cleansing_column" property="cleansingColumn"/>
         <result column="data_cleansing_name" property="dataCleansingName"/>
-        <result column="condition_column" property="conditionColumn"/>
-        <result column="data_condition_name" property="dataConditionName"/>
+        <result column="condition_column_1" property="conditionColumn1"/>
+        <result column="data_condition_name_1" property="dataConditionName1"/>
+        <result column="condition_column_2" property="conditionColumn2"/>
+        <result column="data_condition_name_2" property="dataConditionName2"/>
+        <result column="condition_column_3" property="conditionColumn3"/>
+        <result column="data_condition_name_3" property="dataConditionName3"/>
         <result column="order_no" property="orderNo"/>
     </resultMap>
 
     <sql id="all">
-        id,tb_name,cleansing_column,data_cleansing_name,condition_column,data_condition_name,order_no
+        id,tb_name,cleansing_column,data_cleansing_name,condition_column_1,data_condition_name_1,
+            condition_column_2,data_condition_name_2,
+            condition_column_3,data_condition_name_3,order_no
     </sql>
 
     <select id="queryAll" resultMap="all">
@@ -23,7 +29,7 @@
         WHERE TRUE
     </select>
 
-    <select id="queryTableInfo" resultType="com.lyn.cleansing.javaBean.queryBean.InformationSchemaDto">
+    <select id="queryTableInfo" resultType="com.joyowo.cleansing.javaBean.queryBean.InformationSchemaDto">
         SELECT t1.TABLE_NAME               as tableName,
                t2.TABLE_COMMENT            as tableComment,
                t1.COLUMN_NAME              as columnName,
@@ -42,4 +48,8 @@
           AND t2.TABLE_NAME = t1.TABLE_NAME
         ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION;
     </select>
+    <select id="getDbName" resultType="java.lang.String">
+        SELECT DATABASE();
+    </select>
+
 </mapper>
