@@ -1,6 +1,7 @@
 # 清洗工具
 
-- 作者： lyn
+- 作者： ultimatum lyn
+- 项目地址：<https://github.com/ultimatum10/cleansing_data>
 
 Version：1.0.1
 
