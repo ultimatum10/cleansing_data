@@ -18,7 +18,7 @@ public interface CleansingTableConfigMapper {
     /**
      * 查询所有清洗表数据配置
      */
-    List<CleansingTableConfigEntity> queryAll();
+    List<CleansingTableConfigEntity> queryAllConfig();
 
     /**
      * 查询指定表设置信息

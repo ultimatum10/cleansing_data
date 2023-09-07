@@ -15,7 +15,7 @@ import com.joyowo.cleansing.javaBean.req.CleansingDataReqDto;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author lyn
+ * @author linkaidi
  * @date 2023/8/1
  */
 @Slf4j
@@ -32,7 +32,7 @@ public class CleansingController {
      * 建议该方法用于测试
      * 建议依赖该项目后，自行调用com.joyowo.cleansing.handler.NormalHandler#cleansingMysqlData(java.util.List)方法
      *
-     * @Author: lyn
+     * @Author: linkaidi
      * @Date: 2023/8/1
      */
     @PostMapping({"/cleansingData"})
@@ -44,14 +44,11 @@ public class CleansingController {
         try {
             cleansingService.cleansingMysqlData(list);
 
-            //清除数据库操作handler
-            DbHandlerThreadLocal.removeDbHandler();
-
             log.info("数据处理结束...");
         } catch (Exception e) {
             log.error("处理数据失败", e);
 
-            return "failed";
+            return "failed_"+e.getMessage();
         }
         return "success";
     }

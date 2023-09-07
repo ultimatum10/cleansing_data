@@ -11,6 +11,7 @@ CREATE TABLE `cleansing_table_config` (
     `condition_column_3` varchar(128) COLLATE utf8_bin DEFAULT NULL COMMENT '条件字段3',
     `data_condition_name_3` varchar(128) COLLATE utf8_bin DEFAULT NULL COMMENT '清洗赋值条件字段名称3',
     `order_no` int(4) DEFAULT NULL COMMENT '操作排序',
+    `delete_flag` tinyint(1) DEFAULT 0 COMMENT '删除标识',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='清洗数据表配置';
 
@@ -26,3 +27,4 @@ CREATE TABLE `cleansing_table_config` (
     -- condition_column_3：同上，选填
     -- data_condition_name_3：同上，选填
     -- order_no：清洗顺序（0-9999），未配置则按照id顺序清洗数据,未配置时默认优先度为100
+    -- delete_flag: 删除标识 0未删除 1已删除

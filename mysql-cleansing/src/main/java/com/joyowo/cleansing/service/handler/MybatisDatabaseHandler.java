@@ -1,6 +1,5 @@
 package com.joyowo.cleansing.service.handler;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import com.joyowo.cleansing.exception.CleansingException;
 import com.joyowo.cleansing.javaBean.dto.MybatisDatabaseHandlerDto;
 import com.joyowo.cleansing.javaBean.entity.CleansingTableConfigEntity;
@@ -21,7 +19,7 @@ import com.joyowo.cleansing.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author lyn
+ * @author linkaidi
  * @date 2023/8/7
  */
 @Component
@@ -68,7 +66,7 @@ public class MybatisDatabaseHandler implements DatabaseHandler<MybatisDatabaseHa
      */
     @Override
     public List<CleansingTableConfigEntity> getTableCleansingConfigAll() {
-        List<CleansingTableConfigEntity> tableConfigDtoList = cleansingTableConfigMapper.queryAll();
+        List<CleansingTableConfigEntity> tableConfigDtoList = cleansingTableConfigMapper.queryAllConfig();
         return tableConfigDtoList;
     }
 

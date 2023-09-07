@@ -2,6 +2,7 @@ package com.joyowo.cleansing.logic;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,14 +19,13 @@ import com.joyowo.cleansing.javaBean.queryBean.InformationSchemaDto;
 import com.joyowo.cleansing.other.DbHandlerThreadLocal;
 import com.joyowo.cleansing.service.builder.BaseDBProcessorBuilder;
 import com.joyowo.cleansing.service.processor.BaseCleansingProcessor;
-import com.joyowo.cleansing.service.processor.DBCleansingProcessor;
 import com.joyowo.cleansing.utils.ProcessorUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 清洗数据逻辑
  *
- * @author lyn
+ * @author linkaidi
  * @date 2023/8/7
  */
 @Slf4j
@@ -51,7 +51,7 @@ public class CleansingLogic {
         }
 
         //执行器集合
-        List<BaseCleansingProcessor> processorList = new ArrayList<>();
+        LinkedList<BaseCleansingProcessor> processorList = new LinkedList<>();
 
         //添加数据库执行器进集合
         addDbProcessor(processorList);
@@ -63,8 +63,11 @@ public class CleansingLogic {
             //排序
             ProcessorUtils.processorSort(processorList);
 
+            //条件循环判定，防止被修改后，条件where语句找不到
+            ProcessorUtils.conditionCycleValid(processorList);
+
             //备份需要备份数据库表的数据
-            backTable(processorList);
+            bakTable(processorList);
 
             //按顺序操作执行器
             for (BaseCleansingProcessor baseCleansingProcessor : processorList) {
@@ -79,7 +82,7 @@ public class CleansingLogic {
     /**
      * 备份需要备份数据库表的数据
      */
-    private void backTable(List<BaseCleansingProcessor> processorList) {
+    private void bakTable(List<BaseCleansingProcessor> processorList) {
         List<String> bakTableNames = new ArrayList<>();
         for (BaseCleansingProcessor baseCleansingProcessor : processorList) {
             List<String> bakTable = baseCleansingProcessor.getBakTableNames();
