@@ -27,4 +27,4 @@ CREATE TABLE `cleansing_table_config` (
     -- condition_column_3：同上，选填
     -- data_condition_name_3：同上，选填
     -- order_no：清洗顺序（0-9999），未配置则按照id顺序清洗数据,未配置时默认优先度为100
-    -- delete_flag: 删除标识 0未删除 1已删除
+    -- delete_flag 删除标识 0未删除 1已删除

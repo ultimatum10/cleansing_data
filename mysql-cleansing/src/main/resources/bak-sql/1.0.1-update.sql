@@ -1,0 +1,1 @@
+alter table cleansing_table_config add column `delete_flag` tinyint(1) DEFAULT 0 COMMENT '删除标识';
