@@ -48,7 +48,6 @@ public class CleansingService {
      *
      * @param list 读取需要修改的数据
      */
-    @Transactional(rollbackFor = Exception.class)
     public void cleansingMysqlData(List<Map<String, String>> list) throws Exception {
         try {
             if (CollectionUtils.isEmpty(list)) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import com.lyn.cleansing.constant.DBConstant;
 import com.lyn.cleansing.constant.LogicConstant;
@@ -40,6 +41,7 @@ public class DBCleansingProcessor implements BaseCleansingProcessor {
     private List<String> bakTableNames;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void process(List<Map<String, String>> list) throws CleansingException {
 
         CleansingConfigDto configDto = this.getConfigDto();
